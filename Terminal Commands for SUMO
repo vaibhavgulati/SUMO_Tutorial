@@ -1,0 +1,68 @@
+
+
+                                                     See Help at the Bottom .
+
+Netconvert :
+netconvert --osm-files blore.osm -o blore.net.xml
+
+Polyconvert :
+polyconvert --net-file blore.net.xml --osm-files blore.osm --type-file typemap.xml -o blore.poly.xml
+
+
+help for python :
+python /home/vaibhav/Documents/sumo-0.22.0/tools/trip/randomTrips.py -n blore.net.xml --help
+
+
+python /home/vaibhav/Documents/sumo-0.22.0/tools/trip/randomTrips.py -n blore.net.xml -e 50 -l
+
+Route File :
+python /home/vaibhav/Documents/sumo-0.22.0/tools/trip/randomTrips.py -n blore.net.xml -r blore.rou.xml -e 50 -l
+
+
+Configuration (save it as <file_name>.sumo.cfg . Example : blore.sumo.cfg):
+
+<configuration xsi:noNamespaceSchemaLocation="http://sumo.sf.net/xsd/sumoConfiguration.xsd">
+<input>
+ <net-file value="blore.net.xml"/>
+ <route-files value="blore.rou.xml"/>
+</input>
+<time>
+ <begin value="0"/>
+ <end value="1000"/>
+ <step-length value="0.1"/>
+</time>
+</configuration>
+
+Run Simulation :
+sumo-gui -c blore.sumo.cfg
+
+
+Help (netconvert) :
+
+netconvert : imports digital road networks from different sources and generates road .
+
+
+-c : loads the configuration file .
+
+-n : Read XML-node defs from FILE .
+
+-e : Read XML-edge defs from FILE .
+
+-o : --output-file FILE . The generated net will be written to FILE .
+
+-l : --log FILE  . Writes all messages to FILE (implies verbose).
+
+Help (python) :
+
+-e : END, end time (default 3600) .
+
+-n : NETFILE, define the net file (mandatory) .
+
+-r : ROUTEFILE, generates route file with duarouter .
+
+
+
+
+
+
+
